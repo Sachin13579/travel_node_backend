@@ -1,9 +1,11 @@
 import express from "express";
 import morgan from "morgan";
 
+
 const app = express();
 
 app.use(morgan("dev"))
+
 
 
 app.get('/api/healthCheck',(req,res)=>{
@@ -12,6 +14,7 @@ app.get('/api/healthCheck',(req,res)=>{
         message:"Server is healthy and running."
     })
 })
+
 
 
 export default app;
