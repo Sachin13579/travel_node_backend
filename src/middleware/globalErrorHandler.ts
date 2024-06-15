@@ -2,7 +2,7 @@ import { Response, Request, NextFunction } from "express";
 import { HttpError } from "http-errors";
 import { config } from "../config/config";
 
-export const errorHandler = (
+export const gLobalErrorHandler = (
   err: HttpError,
   req: Request,
   res: Response,
