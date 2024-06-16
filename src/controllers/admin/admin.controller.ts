@@ -18,9 +18,7 @@ const registerAdmin = async (
     const serviceResponse = await adminServiceFuncs.registerAdmin(req.body);
 
     if (serviceResponse.status === false) {
-      return next(
-        createHttpError(serviceResponse.statusCode, serviceResponse.message)
-      );
+      return next(createHttpError(serviceResponse.statusCode, serviceResponse));
     }
 
     return res.status(serviceResponse.statusCode).json({

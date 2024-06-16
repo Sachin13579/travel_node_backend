@@ -3,9 +3,15 @@ import dataSantizer from "../../utils/dataSanitizer";
 
 const registerAdmin = async (body: Object) => {
   try {
-    const response = dataSantizer.adminUser.parse(body);
-    console.log(response);
-    // throw new Error(`Invalidq`);
+    const response = dataSantizer.adminUser.safeParse(body);
+
+    if (!response.success) {
+      return {
+        status: false,
+        statusCode: 400,
+        message: response.error.flatten().fieldErrors,
+      };
+    }
 
     console.log(body);
     return {
