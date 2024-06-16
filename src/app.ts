@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import createHttpError from "http-errors";
 import { gLobalErrorHandler } from "./middleware/globalErrorHandler";
+import indexRouter from "./routes/index.routes";
 
 const app = express();
 
@@ -20,6 +21,9 @@ app.get(
     }
   }
 );
+
+app.use(express.json());
+app.use("/api", indexRouter);
 app.use(gLobalErrorHandler);
 
 export default app;
