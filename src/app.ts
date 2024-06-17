@@ -3,6 +3,7 @@ import morgan from "morgan";
 import createHttpError from "http-errors";
 import { gLobalErrorHandler } from "./middleware/globalErrorHandler";
 import indexRouter from "./routes/index.routes";
+import * as models from "./models/index";
 
 const app = express();
 
@@ -25,5 +26,7 @@ app.get(
 app.use(express.json());
 app.use("/api", indexRouter);
 app.use(gLobalErrorHandler);
+(global as any).Models = models;
+// console.log(models);
 
 export default app;

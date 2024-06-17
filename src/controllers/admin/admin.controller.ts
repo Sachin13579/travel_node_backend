@@ -23,6 +23,7 @@ const registerAdmin = async (
 
     return res.status(serviceResponse.statusCode).json({
       status: serviceResponse.status,
+      data: serviceResponse.data,
       message: serviceResponse.message,
     });
   } catch (error: any) {
